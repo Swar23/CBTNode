@@ -1,0 +1,27 @@
+{
+  "name": "cbtnode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Swar23/CBTNode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.4",
+    "mongoose": "^5.11.18",
+    "nodemon": "^2.0.7"
+  },
+  "bugs": {
+    "url": "https://github.com/Swar23/CBTNode/issues"
+  },
+  "homepage": "https://github.com/Swar23/CBTNode#readme"
+}
