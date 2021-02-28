@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const port = 3000;
 const app = express();
 let User;
-
+let Student;
 //setting up bodyParser middleWare
 app.use(bodyParser.urlencoded({"extended":true}))
 app.use(bodyParser.json());
@@ -22,6 +22,13 @@ async function run() {
 
   await User.create({ email: 'swarup@gmail.com', userId: 1, password: '123456' });
 
+  const studentSchema = new mongoose.Schema({ id: Number, Name: String, Subject: String , Marks:Number });
+  Student = mongoose.model('StudentDetail', studentSchema);
+
+  await Student.create({ id: 1, Name: 'Swapnil', Subject: 'English', Marks: 90 },
+    { id: 2, Name: 'Sameer', Subject: 'Marathi', Marks: 100 },
+    { id: 3, Name: 'Tina', Subject: 'Maths', Marks: 20 },
+    { id: 4, Name: 'Rekha', Subject: 'Sanskrit' , Marks:89 });
 }
 //error handler middleWare
 app.use(function(err, req, res, next) {
@@ -40,9 +47,19 @@ app.post("/login", (req, res, next) => {
             console.log(e);
             next(e);
         })
-  
-  
-  
+})
+
+
+app.get("/student", (req, res, next) => {
+  console.log('called');
+  Student.find({ })
+    .then(docs => {
+      res.send(docs);
+        })
+        .catch(e => {
+            console.log(e);
+            next(e);
+        })
 })
 
 app.listen(port,()=>{console.log("server started")});
